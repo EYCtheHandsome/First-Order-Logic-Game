@@ -1,0 +1,1846 @@
+{
+  "easy": [
+    {
+      "id": "easy_all_shapes_are_color",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "color1": {
+          "type": "color"
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        }
+      ],
+      "statement": {
+        "text": "All {shape1}s are {color1Name}.",
+        "fol": "\u2200x (Shape(x, {shape1}) \u2192 Color(x, {color1Name}))",
+        "hint": "Check the color on every {shape1}."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "equals",
+            "left": {
+              "kind": "cellProperty",
+              "property": "shape"
+            },
+            "right": {
+              "kind": "placeholder",
+              "key": "shape1"
+            }
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "color",
+              "value": {
+                "kind": "placeholder",
+                "key": "color1"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "easy_all_color_shapes_are_shape",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "color1": {
+          "type": "color"
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        }
+      ],
+      "statement": {
+        "text": "All {color1Name} shapes are {shape1}.",
+        "fol": "\u2200x (Color(x, {color1Name}) \u2192 Shape(x, {shape1}))",
+        "hint": "Look at pieces that are {color1Name}."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "equals",
+            "left": {
+              "kind": "cellProperty",
+              "property": "color"
+            },
+            "right": {
+              "kind": "placeholder",
+              "key": "color1"
+            }
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "shape",
+              "value": {
+                "kind": "placeholder",
+                "key": "shape1"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "easy_all_shapes_have_value",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "number1": {
+          "type": "number"
+        }
+      },
+      "computedFields": [],
+      "statement": {
+        "text": "All {shape1}s have value {number1}.",
+        "fol": "\u2200x (Shape(x, {shape1}) \u2192 Value(x, {number1}))",
+        "hint": "Compare the numbers shown on each {shape1}."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "equals",
+            "left": {
+              "kind": "cellProperty",
+              "property": "shape"
+            },
+            "right": {
+              "kind": "placeholder",
+              "key": "shape1"
+            }
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "number",
+              "value": {
+                "kind": "placeholder",
+                "key": "number1"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "number",
+            "fromPlaceholder": "number1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "easy_value_implies_shape",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "number1": {
+          "type": "number"
+        }
+      },
+      "computedFields": [],
+      "statement": {
+        "text": "All shapes with value {number1} are {shape1}.",
+        "fol": "\u2200x (Value(x, {number1}) \u2192 Shape(x, {shape1}))",
+        "hint": "Focus on tiles with the value {number1}."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "equals",
+            "left": {
+              "kind": "cellProperty",
+              "property": "number"
+            },
+            "right": {
+              "kind": "placeholder",
+              "key": "number1"
+            }
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "shape",
+              "value": {
+                "kind": "placeholder",
+                "key": "shape1"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "number",
+            "fromPlaceholder": "number1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "easy_value_implies_color",
+      "placeholders": {
+        "color1": {
+          "type": "color"
+        },
+        "number1": {
+          "type": "number"
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        }
+      ],
+      "statement": {
+        "text": "All shapes with value {number1} are {color1Name}.",
+        "fol": "\u2200x (Value(x, {number1}) \u2192 Color(x, {color1Name}))",
+        "hint": "Look for tiles showing the value {number1}."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "equals",
+            "left": {
+              "kind": "cellProperty",
+              "property": "number"
+            },
+            "right": {
+              "kind": "placeholder",
+              "key": "number1"
+            }
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "color",
+              "value": {
+                "kind": "placeholder",
+                "key": "color1"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "number",
+            "fromPlaceholder": "number1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "easy_color_implies_value",
+      "placeholders": {
+        "color1": {
+          "type": "color"
+        },
+        "number1": {
+          "type": "number"
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        }
+      ],
+      "statement": {
+        "text": "All {color1Name} shapes have value {number1}.",
+        "fol": "\u2200x (Color(x, {color1Name}) \u2192 Value(x, {number1}))",
+        "hint": "Inspect the {color1Name} tiles and note their numbers."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "equals",
+            "left": {
+              "kind": "cellProperty",
+              "property": "color"
+            },
+            "right": {
+              "kind": "placeholder",
+              "key": "color1"
+            }
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "number",
+              "value": {
+                "kind": "placeholder",
+                "key": "number1"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "number",
+            "fromPlaceholder": "number1"
+          }
+        }
+      ]
+    }
+  ],
+  "medium": [
+    {
+      "id": "medium_shape_value_comparison_region",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "color1": {
+          "type": "color"
+        },
+        "condition": {
+          "type": "comparison",
+          "options": [
+            "greater",
+            "less"
+          ]
+        },
+        "numberThreshold": {
+          "type": "number",
+          "min": 5,
+          "max": 9
+        },
+        "direction": {
+          "type": "choice",
+          "options": [
+            "left",
+            "right",
+            "top",
+            "bottom"
+          ]
+        },
+        "numUnits": {
+          "type": "int",
+          "min": 2,
+          "max": 3
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "positionDescription",
+          "type": "regionDescription",
+          "directionKey": "direction",
+          "sizeKey": "numUnits"
+        },
+        {
+          "key": "conditionWord",
+          "type": "comparisonWord",
+          "source": "condition"
+        },
+        {
+          "key": "comparisonSymbol",
+          "type": "comparisonSymbol",
+          "source": "condition"
+        }
+      ],
+      "statement": {
+        "text": "All {shape1}s with value {conditionWord} {numberThreshold} are {color1Name} and located in the {positionDescription} of the grid.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Value(x) {comparisonSymbol} {numberThreshold}) \u2192 (Color(x, {color1Name}) \u2227 Location(x, {positionDescription})))",
+        "hint": "Pay attention to {shape1}s whose numbers are {conditionWord} {numberThreshold} and where they sit."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "any",
+                "conditions": [
+                  {
+                    "operator": "all",
+                    "conditions": [
+                      {
+                        "operator": "equals",
+                        "left": {
+                          "kind": "placeholder",
+                          "key": "condition"
+                        },
+                        "right": {
+                          "kind": "constant",
+                          "value": "greater"
+                        }
+                      },
+                      {
+                        "operator": "greaterThan",
+                        "left": {
+                          "kind": "cellProperty",
+                          "property": "number"
+                        },
+                        "right": {
+                          "kind": "placeholder",
+                          "key": "numberThreshold"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "operator": "all",
+                    "conditions": [
+                      {
+                        "operator": "equals",
+                        "left": {
+                          "kind": "placeholder",
+                          "key": "condition"
+                        },
+                        "right": {
+                          "kind": "constant",
+                          "value": "less"
+                        }
+                      },
+                      {
+                        "operator": "lessThan",
+                        "left": {
+                          "kind": "cellProperty",
+                          "property": "number"
+                        },
+                        "right": {
+                          "kind": "placeholder",
+                          "key": "numberThreshold"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "color",
+              "value": {
+                "kind": "placeholder",
+                "key": "color1"
+              }
+            },
+            {
+              "action": "requireRegion",
+              "direction": {
+                "kind": "placeholder",
+                "key": "direction"
+              },
+              "size": {
+                "kind": "placeholder",
+                "key": "numUnits"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "medium_shape_parity_region",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "color1": {
+          "type": "color"
+        },
+        "parity": {
+          "type": "parity"
+        },
+        "direction": {
+          "type": "choice",
+          "options": [
+            "left",
+            "right",
+            "top",
+            "bottom"
+          ]
+        },
+        "numUnits": {
+          "type": "int",
+          "min": 2,
+          "max": 3
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "positionDescription",
+          "type": "regionDescription",
+          "directionKey": "direction",
+          "sizeKey": "numUnits"
+        },
+        {
+          "key": "parityFol",
+          "type": "parityPredicate",
+          "source": "parity"
+        }
+      ],
+      "statement": {
+        "text": "All {shape1}s with {parity} values are {color1Name} and located in the {positionDescription} of the grid.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 {parityFol}(Value(x))) \u2192 (Color(x, {color1Name}) \u2227 Location(x, {positionDescription})))",
+        "hint": "Check {shape1}s that have {parity} numbers and where they appear."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "parity",
+                "value": {
+                  "kind": "cellProperty",
+                  "property": "number"
+                },
+                "parity": {
+                  "kind": "placeholder",
+                  "key": "parity"
+                }
+              }
+            ]
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "color",
+              "value": {
+                "kind": "placeholder",
+                "key": "color1"
+              }
+            },
+            {
+              "action": "requireRegion",
+              "direction": {
+                "kind": "placeholder",
+                "key": "direction"
+              },
+              "size": {
+                "kind": "placeholder",
+                "key": "numUnits"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "medium_shape_between_region",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "color1": {
+          "type": "color"
+        },
+        "minValue": {
+          "type": "number",
+          "min": 3,
+          "max": 5
+        },
+        "maxValue": {
+          "type": "number",
+          "minRef": "minValue",
+          "minOffset": 1,
+          "max": 9
+        },
+        "direction": {
+          "type": "choice",
+          "options": [
+            "left",
+            "right",
+            "top",
+            "bottom"
+          ]
+        },
+        "numUnits": {
+          "type": "int",
+          "min": 2,
+          "max": 3
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "positionDescription",
+          "type": "regionDescription",
+          "directionKey": "direction",
+          "sizeKey": "numUnits"
+        }
+      ],
+      "statement": {
+        "text": "All {shape1}s with values between {minValue} and {maxValue} are {color1Name} and located in the {positionDescription} of the grid.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Value(x) \u2265 {minValue} \u2227 Value(x) \u2264 {maxValue}) \u2192 (Color(x, {color1Name}) \u2227 Location(x, {positionDescription})))",
+        "hint": "Notice {shape1}s with numbers between {minValue} and {maxValue}."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "between",
+                "value": {
+                  "kind": "cellProperty",
+                  "property": "number"
+                },
+                "min": {
+                  "kind": "placeholder",
+                  "key": "minValue"
+                },
+                "max": {
+                  "kind": "placeholder",
+                  "key": "maxValue"
+                }
+              }
+            ]
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "color",
+              "value": {
+                "kind": "placeholder",
+                "key": "color1"
+              }
+            },
+            {
+              "action": "requireRegion",
+              "direction": {
+                "kind": "placeholder",
+                "key": "direction"
+              },
+              "size": {
+                "kind": "placeholder",
+                "key": "numUnits"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "medium_shape_parity_region_evenfirst",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "color1": {
+          "type": "color"
+        },
+        "parity": {
+          "type": "parity"
+        },
+        "direction": {
+          "type": "choice",
+          "options": [
+            "left",
+            "right",
+            "top",
+            "bottom"
+          ]
+        },
+        "numUnits": {
+          "type": "int",
+          "min": 2,
+          "max": 3
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "positionDescription",
+          "type": "regionDescription",
+          "directionKey": "direction",
+          "sizeKey": "numUnits"
+        },
+        {
+          "key": "parityFol",
+          "type": "parityPredicate",
+          "source": "parity"
+        }
+      ],
+      "statement": {
+        "text": "All {shape1}s with {parity} values are {color1Name} and located in the {positionDescription} of the grid.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 {parityFol}(Value(x))) \u2192 (Color(x, {color1Name}) \u2227 Location(x, {positionDescription})))",
+        "hint": "Check {shape1}s that have {parity} numbers and where they appear."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "parity",
+                "value": {
+                  "kind": "cellProperty",
+                  "property": "number"
+                },
+                "parity": {
+                  "kind": "placeholder",
+                  "key": "parity"
+                }
+              }
+            ]
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "color",
+              "value": {
+                "kind": "placeholder",
+                "key": "color1"
+              }
+            },
+            {
+              "action": "requireRegion",
+              "direction": {
+                "kind": "placeholder",
+                "key": "direction"
+              },
+              "size": {
+                "kind": "placeholder",
+                "key": "numUnits"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "medium_shape_prime_region",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "color1": {
+          "type": "color"
+        },
+        "direction": {
+          "type": "choice",
+          "options": [
+            "left",
+            "right",
+            "top",
+            "bottom"
+          ]
+        },
+        "numUnits": {
+          "type": "int",
+          "min": 2,
+          "max": 3
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "positionDescription",
+          "type": "regionDescription",
+          "directionKey": "direction",
+          "sizeKey": "numUnits"
+        }
+      ],
+      "statement": {
+        "text": "All {shape1}s with prime values are {color1Name} and located in the {positionDescription} of the grid.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Prime(Value(x))) \u2192 (Color(x, {color1Name}) \u2227 Location(x, {positionDescription})))",
+        "hint": "Prime numbers on {shape1}s might guide you."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "prime",
+                "value": {
+                  "kind": "cellProperty",
+                  "property": "number"
+                }
+              }
+            ]
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "color",
+              "value": {
+                "kind": "placeholder",
+                "key": "color1"
+              }
+            },
+            {
+              "action": "requireRegion",
+              "direction": {
+                "kind": "placeholder",
+                "key": "direction"
+              },
+              "size": {
+                "kind": "placeholder",
+                "key": "numUnits"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "medium_shape_multiple_region",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "color1": {
+          "type": "color"
+        },
+        "factor": {
+          "type": "factor",
+          "options": [
+            2,
+            3
+          ]
+        },
+        "direction": {
+          "type": "choice",
+          "options": [
+            "left",
+            "right",
+            "top",
+            "bottom"
+          ]
+        },
+        "numUnits": {
+          "type": "int",
+          "min": 2,
+          "max": 3
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "positionDescription",
+          "type": "regionDescription",
+          "directionKey": "direction",
+          "sizeKey": "numUnits"
+        }
+      ],
+      "statement": {
+        "text": "All {shape1}s with values that are multiples of {factor} are {color1Name} and located in the {positionDescription} of the grid.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 MultipleOf(Value(x), {factor})) \u2192 (Color(x, {color1Name}) \u2227 Location(x, {positionDescription})))",
+        "hint": "Look at {shape1}s whose numbers are multiples of {factor} and where they sit."
+      },
+      "rules": [
+        {
+          "type": "implication",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "multipleOf",
+                "value": {
+                  "kind": "cellProperty",
+                  "property": "number"
+                },
+                "factor": {
+                  "kind": "placeholder",
+                  "key": "factor"
+                }
+              }
+            ]
+          },
+          "actions": [
+            {
+              "action": "setCellProperty",
+              "property": "color",
+              "value": {
+                "kind": "placeholder",
+                "key": "color1"
+              }
+            },
+            {
+              "action": "requireRegion",
+              "direction": {
+                "kind": "placeholder",
+                "key": "direction"
+              },
+              "size": {
+                "kind": "placeholder",
+                "key": "numUnits"
+              }
+            }
+          ],
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "shape",
+            "fromPlaceholder": "shape1"
+          },
+          "violation": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    }
+  ],
+  "hard": [
+    {
+      "id": "hard_right_neighbor_greater",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "shape2": {
+          "type": "shape",
+          "excludePlaceholders": [
+            "shape1"
+          ]
+        },
+        "color1": {
+          "type": "color"
+        },
+        "valueThreshold": {
+          "type": "number",
+          "min": 2,
+          "max": 6
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "valueConditionDescription",
+          "type": "stringTemplate",
+          "template": "with a value greater than {valueThreshold}"
+        }
+      ],
+      "statement": {
+        "text": "For all {shape1}s that are {color1Name}, there exists a {shape2} {valueConditionDescription} directly to the right of it.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Color(x, {color1Name})) \u2192 \u2203y (Shape(y, {shape2}) \u2227 Value(y) > {valueThreshold} \u2227 RightOf(y, x)))",
+        "hint": "See what sits immediately to the right of each {color1Name} {shape1}."
+      },
+      "rules": [
+        {
+          "type": "neighborRequirement",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "color"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "color1"
+                }
+              }
+            ]
+          },
+          "neighbor": {
+            "direction": {
+              "kind": "constant",
+              "value": "right"
+            },
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "operator": "greaterThan",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "number"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "valueThreshold"
+                }
+              }
+            ],
+            "satisfy": [
+              {
+                "action": "setNeighborProperty",
+                "property": "shape",
+                "value": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "action": "ensureNeighborNumber",
+                "comparison": "greaterThan",
+                "placeholder": "valueThreshold"
+              }
+            ],
+            "violation": {
+              "action": "setNeighborPropertyDistinct",
+              "property": "shape",
+              "fromPlaceholder": "shape2"
+            }
+          },
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hard_left_neighbor_less",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "shape2": {
+          "type": "shape",
+          "excludePlaceholders": [
+            "shape1"
+          ]
+        },
+        "color1": {
+          "type": "color"
+        },
+        "valueThreshold": {
+          "type": "number",
+          "min": 3,
+          "max": 8
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "valueConditionDescription",
+          "type": "stringTemplate",
+          "template": "with a value less than {valueThreshold}"
+        }
+      ],
+      "statement": {
+        "text": "For all {shape1}s that are {color1Name}, there exists a {shape2} {valueConditionDescription} directly to the left of it.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Color(x, {color1Name})) \u2192 \u2203y (Shape(y, {shape2}) \u2227 Value(y) < {valueThreshold} \u2227 LeftOf(y, x)))",
+        "hint": "Check the tile directly left of each {color1Name} {shape1}."
+      },
+      "rules": [
+        {
+          "type": "neighborRequirement",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "color"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "color1"
+                }
+              }
+            ]
+          },
+          "neighbor": {
+            "direction": {
+              "kind": "constant",
+              "value": "left"
+            },
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "operator": "lessThan",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "number"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "valueThreshold"
+                }
+              }
+            ],
+            "satisfy": [
+              {
+                "action": "setNeighborProperty",
+                "property": "shape",
+                "value": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "action": "ensureNeighborNumber",
+                "comparison": "lessThan",
+                "placeholder": "valueThreshold"
+              }
+            ],
+            "violation": {
+              "action": "setNeighborPropertyDistinct",
+              "property": "shape",
+              "fromPlaceholder": "shape2"
+            }
+          },
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hard_above_neighbor_ge",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "shape2": {
+          "type": "shape",
+          "excludePlaceholders": [
+            "shape1"
+          ]
+        },
+        "color1": {
+          "type": "color"
+        },
+        "valueThreshold": {
+          "type": "number",
+          "min": 2,
+          "max": 6
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "valueConditionDescription",
+          "type": "stringTemplate",
+          "template": "with a value greater than or equal to {valueThreshold}"
+        }
+      ],
+      "statement": {
+        "text": "For all {shape1}s that are {color1Name}, there exists a {shape2} {valueConditionDescription} directly above it.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Color(x, {color1Name})) \u2192 \u2203y (Shape(y, {shape2}) \u2227 Value(y) \u2265 {valueThreshold} \u2227 Above(y, x)))",
+        "hint": "Look directly above the {color1Name} {shape1}s."
+      },
+      "rules": [
+        {
+          "type": "neighborRequirement",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "color"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "color1"
+                }
+              }
+            ]
+          },
+          "neighbor": {
+            "direction": {
+              "kind": "constant",
+              "value": "above"
+            },
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "operator": "greaterOrEqual",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "number"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "valueThreshold"
+                }
+              }
+            ],
+            "satisfy": [
+              {
+                "action": "setNeighborProperty",
+                "property": "shape",
+                "value": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "action": "ensureNeighborNumber",
+                "comparison": "greaterOrEqual",
+                "placeholder": "valueThreshold"
+              }
+            ],
+            "violation": {
+              "action": "setNeighborPropertyDistinct",
+              "property": "shape",
+              "fromPlaceholder": "shape2"
+            }
+          },
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hard_below_neighbor_less",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "shape2": {
+          "type": "shape",
+          "excludePlaceholders": [
+            "shape1"
+          ]
+        },
+        "color1": {
+          "type": "color"
+        },
+        "valueThreshold": {
+          "type": "number",
+          "min": 2,
+          "max": 6
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "valueConditionDescription",
+          "type": "stringTemplate",
+          "template": "with a value less than {valueThreshold}"
+        }
+      ],
+      "statement": {
+        "text": "For all {shape1}s that are {color1Name}, there exists a {shape2} {valueConditionDescription} directly below it.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Color(x, {color1Name})) \u2192 \u2203y (Shape(y, {shape2}) \u2227 Value(y) < {valueThreshold} \u2227 Below(y, x)))",
+        "hint": "Inspect the tiles directly below each {color1Name} {shape1}."
+      },
+      "rules": [
+        {
+          "type": "neighborRequirement",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "color"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "color1"
+                }
+              }
+            ]
+          },
+          "neighbor": {
+            "direction": {
+              "kind": "constant",
+              "value": "below"
+            },
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "operator": "lessThan",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "number"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "valueThreshold"
+                }
+              }
+            ],
+            "satisfy": [
+              {
+                "action": "setNeighborProperty",
+                "property": "shape",
+                "value": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "action": "ensureNeighborNumber",
+                "comparison": "lessThan",
+                "placeholder": "valueThreshold"
+              }
+            ],
+            "violation": {
+              "action": "setNeighborPropertyDistinct",
+              "property": "shape",
+              "fromPlaceholder": "shape2"
+            }
+          },
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hard_top_left_diagonal_ge",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "shape2": {
+          "type": "shape",
+          "excludePlaceholders": [
+            "shape1"
+          ]
+        },
+        "color1": {
+          "type": "color"
+        },
+        "valueThreshold": {
+          "type": "number",
+          "min": 2,
+          "max": 6
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "valueConditionDescription",
+          "type": "stringTemplate",
+          "template": "with a value greater than or equal to {valueThreshold}"
+        }
+      ],
+      "statement": {
+        "text": "For all {shape1}s that are {color1Name}, there exists a {shape2} {valueConditionDescription} diagonally top-left of it.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Color(x, {color1Name})) \u2192 \u2203y (Shape(y, {shape2}) \u2227 Value(y) \u2265 {valueThreshold} \u2227 TopLeftDiagonalOf(y, x)))",
+        "hint": "Consider the tile diagonally top-left of each {color1Name} {shape1}."
+      },
+      "rules": [
+        {
+          "type": "neighborRequirement",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "color"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "color1"
+                }
+              }
+            ]
+          },
+          "neighbor": {
+            "direction": {
+              "kind": "constant",
+              "value": "topLeft"
+            },
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "operator": "greaterOrEqual",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "number"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "valueThreshold"
+                }
+              }
+            ],
+            "satisfy": [
+              {
+                "action": "setNeighborProperty",
+                "property": "shape",
+                "value": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "action": "ensureNeighborNumber",
+                "comparison": "greaterOrEqual",
+                "placeholder": "valueThreshold"
+              }
+            ],
+            "violation": {
+              "action": "setNeighborPropertyDistinct",
+              "property": "shape",
+              "fromPlaceholder": "shape2"
+            }
+          },
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hard_top_right_diagonal_less",
+      "placeholders": {
+        "shape1": {
+          "type": "shape"
+        },
+        "shape2": {
+          "type": "shape",
+          "excludePlaceholders": [
+            "shape1"
+          ]
+        },
+        "color1": {
+          "type": "color"
+        },
+        "valueThreshold": {
+          "type": "number",
+          "min": 2,
+          "max": 6
+        }
+      },
+      "computedFields": [
+        {
+          "key": "color1Name",
+          "type": "colorName",
+          "source": "color1"
+        },
+        {
+          "key": "valueConditionDescription",
+          "type": "stringTemplate",
+          "template": "with a value less than {valueThreshold}"
+        }
+      ],
+      "statement": {
+        "text": "For all {shape1}s that are {color1Name}, there exists a {shape2} {valueConditionDescription} diagonally top-right of it.",
+        "fol": "\u2200x ((Shape(x, {shape1}) \u2227 Color(x, {color1Name})) \u2192 \u2203y (Shape(y, {shape2}) \u2227 Value(y) < {valueThreshold} \u2227 TopRightDiagonalOf(y, x)))",
+        "hint": "Look at the tile diagonally top-right of each {color1Name} {shape1}."
+      },
+      "rules": [
+        {
+          "type": "neighborRequirement",
+          "when": {
+            "operator": "all",
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape1"
+                }
+              },
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "cellProperty",
+                  "property": "color"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "color1"
+                }
+              }
+            ]
+          },
+          "neighbor": {
+            "direction": {
+              "kind": "constant",
+              "value": "topRight"
+            },
+            "conditions": [
+              {
+                "operator": "equals",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "shape"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "operator": "lessThan",
+                "left": {
+                  "kind": "neighborProperty",
+                  "property": "number"
+                },
+                "right": {
+                  "kind": "placeholder",
+                  "key": "valueThreshold"
+                }
+              }
+            ],
+            "satisfy": [
+              {
+                "action": "setNeighborProperty",
+                "property": "shape",
+                "value": {
+                  "kind": "placeholder",
+                  "key": "shape2"
+                }
+              },
+              {
+                "action": "ensureNeighborNumber",
+                "comparison": "lessThan",
+                "placeholder": "valueThreshold"
+              }
+            ],
+            "violation": {
+              "action": "setNeighborPropertyDistinct",
+              "property": "shape",
+              "fromPlaceholder": "shape2"
+            }
+          },
+          "breakAntecedent": {
+            "action": "setCellPropertyDistinct",
+            "property": "color",
+            "fromPlaceholder": "color1"
+          }
+        }
+      ]
+    }
+  ]
+}

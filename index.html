@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logic Grid Game</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="game-shell">
+    <header class="control-panel">
+      <div class="knob-group">
+        <label for="difficulty-select">Difficulty</label>
+        <select id="difficulty-select" class="control-select">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <button id="next-question" class="control-button">Next Puzzle</button>
+    </header>
+
+    <main class="board-panel">
+      <section class="grid-housing">
+        <div id="grid-container" class="grid-face"></div>
+      </section>
+
+      <section class="statement-panel">
+        <div class="statement-display">
+          <div id="statement-text" class="statement-text"></div>
+          <div class="hint-controls">
+            <button id="hint-button" class="hint-button">Show Hint</button>
+            <div id="hint-text" class="hint-text" hidden></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="options-panel">
+        <div id="option-buttons" class="options-container">
+          <!-- Buttons injected at runtime -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="scripts/main.js"></script>
+
+  <!-- Simple load check -->
+  <script>
+    window.onload = function() {
+      console.log("Page loaded successfully.");
+    };
+  </script>
+</body>
+</html>
