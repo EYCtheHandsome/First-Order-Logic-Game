@@ -4,21 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Logic Grid Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600&family=Fredoka:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
   <div class="game-shell">
     <header class="control-panel">
-      <div class="knob-group">
-        <label for="difficulty-select">Difficulty</label>
-        <select id="difficulty-select" class="control-select">
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
+      <div class="panel-head">
+        <p class="eyebrow-text">First Order Logic Playground</p>
+        <div class="panel-actions">
+          <div class="knob-group">
+            <label for="difficulty-select">Difficulty</label>
+            <select id="difficulty-select" class="control-select">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <button id="next-question" class="control-button">Next Puzzle</button>
+
+      <div class="stat-group" aria-live="polite">
+        <div class="stat-card">
+          <span class="stat-label">Puzzle</span>
+          <span class="stat-value" id="stat-puzzle">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Solved</span>
+          <span class="stat-value" id="stat-correct">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Streak</span>
+          <span class="stat-value" id="stat-streak">0</span>
+        </div>
+      </div>
     </header>
 
     <main class="board-panel">
@@ -28,7 +50,7 @@
 
       <section class="statement-panel">
         <div class="statement-display">
-          <div id="statement-text" class="statement-text"></div>
+          <p class="statement-heading">Which statement matches the grid below?</p>
           <div class="hint-controls">
             <button id="hint-button" class="hint-button">Show Hint</button>
             <div id="hint-text" class="hint-text" hidden></div>
@@ -41,7 +63,12 @@
           <!-- Buttons injected at runtime -->
         </div>
       </section>
+
+      <div class="play-actions">
+        <button id="next-question" class="control-button">Next Puzzle</button>
+      </div>
     </main>
+
   </div>
 
   <script type="module" src="scripts/main.js"></script>
